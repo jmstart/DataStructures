@@ -41,6 +41,12 @@ public class SingleLinkedListDemo {
         linkedList.update(newHeroNode);
         System.out.println("修改后的链表情况...");
 
+        //测试删除节点
+        linkedList.del(1);
+//        linkedList.del(4);
+//        linkedList.del(3);
+//        linkedList.del(2);
+
         //显示
         linkedList.list();
     }
@@ -145,6 +151,38 @@ class SingleLinkedList {
 
     }
 
+    //删除节点
+    //思路:
+    //head不能动 所以需要一个辅助节点temp
+    //要删除节点 需要找到它的前一个节点 防止坐标丢失
+    public void del(int no){
+        //辅助节点
+        HeroNode temp = head;
+        //标志是否找到
+        boolean flag = false;
+        while (true){
+            //到达链表尾部
+            if (temp.next == null){
+                break;
+            }
+            //找到 待删除节点的前一个节点temp
+            if (temp.next.no == no){
+                flag = true;
+                break;
+            }
+            //继续查找
+            temp = temp.next;
+        }
+        //判断 flag
+        if (flag){
+            //找到temp 待删除节点的前一个节点
+            //这样要删除的节点 就不会有引用指向它了 会被Java垃圾回收机制回收
+            temp.next = temp.next.next;
+        }else {
+            System.out.printf("要删除的节点 %d 不存在\n", no);
+        }
+
+    }
 
     //显示链表[遍历]
     public void list() {
