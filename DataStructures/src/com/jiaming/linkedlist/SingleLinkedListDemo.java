@@ -47,15 +47,45 @@ public class SingleLinkedListDemo {
 //        linkedList.del(3);
 //        linkedList.del(2);
 
+
         //显示
         linkedList.list();
+
+        //测试获取单链表节点的个数
+        System.out.println(getLength(linkedList.getHead()));
     }
+
+    //面试题1. 获取单链表节点的个数 (如果有带头节点,则不计算带头结点)
+    public static int getLength(HeroNode head){
+        //判空
+        if (head.next == null){
+            return 0;
+        }
+
+        int length = 0;
+        //定义一个辅助变量
+        HeroNode cur = head.next;
+        //遍历
+        while (cur != null){
+            length++;
+            //向下遍历
+            cur = cur.next;
+        }
+
+        return length;
+    }
+
 }
 
 //创建SingleLinkedList 来管理我们的人物
 class SingleLinkedList {
     //先初始化一个头节点 不存放具体的数据 而且头节点不能动 防止以后找不到这个链表
     private HeroNode head = new HeroNode(0, "", "");
+
+    //获取 head头节点
+    public HeroNode getHead() {
+        return head;
+    }
 
     //添加节点到链表
     //思路: 当不考虑编号顺序时
@@ -154,7 +184,7 @@ class SingleLinkedList {
     //删除节点
     //思路:
     //head不能动 所以需要一个辅助节点temp
-    //要删除节点 需要找到它的前一个节点 防止坐标丢失
+    //要删除节点 需要找到它的前一个节点temp 防止坐标丢失
     public void del(int no){
         //辅助节点
         HeroNode temp = head;
