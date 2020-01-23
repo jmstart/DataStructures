@@ -52,7 +52,7 @@ public class SingleLinkedListDemo {
         linkedList.list();
 
         //测试获取单链表节点的个数
-        System.out.println(getLength(linkedList.getHead()));
+        System.out.println("有效的节点个数: " + getLength(linkedList.getHead()));
     }
 
     //面试题1. 获取单链表节点的个数 (如果有带头节点,则不计算带头结点)
