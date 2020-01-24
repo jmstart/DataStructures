@@ -1,12 +1,10 @@
 package com.jiaming.linkedlist;
 
-
 /**
  * @author jmstart
- * @create 2020-01-14 19:16
- * 用水浒传人物 模拟单链表
+ * @create 2020-01-24 19:43
  */
-public class SingleLinkedListDemo {
+public class InterviewQuestion {
 
     //测试链表
     public static void main(String[] args) {
@@ -20,12 +18,6 @@ public class SingleLinkedListDemo {
         //创建一个链表
         SingleLinkedList linkedList = new SingleLinkedList();
 
-        //添加 无序
-      /*  linkedList.add(heroNode1);
-        linkedList.add(heroNode2);
-        linkedList.add(heroNode3);
-        linkedList.add(heroNode4);*/
-
         //添加 有序
         linkedList.addByOrder(heroNode1);
         linkedList.addByOrder(heroNode4);
@@ -36,25 +28,70 @@ public class SingleLinkedListDemo {
         //显示
         linkedList.list();
 
-        //测试修改链表的方法
-        HeroNode newHeroNode = new HeroNode(3, "小吴", "阿智...");
-        linkedList.update(newHeroNode);
-        System.out.println("修改后的链表情况...");
+        //测试获取单链表节点的个数
+        System.out.println("有效的节点个数: " + getLength(linkedList.getHead()));
 
-        //测试删除节点
-        linkedList.del(1);
-//        linkedList.del(4);
-//        linkedList.del(3);
-//        linkedList.del(2);
-
-        //显示
-        linkedList.list();
+        //测试查找单链表中的倒数第 k 个节点
+        HeroNode res = findLastIndexNode(linkedList.getHead(),1);
+        HeroNode res2 = findLastIndexNode(linkedList.getHead(),5);
+        System.out.println("res: " + res);
+        System.out.println("res2: " + res2);
 
     }
+
+    //面试题2. 查找单链表中的倒数第 k 个节点【新浪】
+    //思路:
+    //1.方法接收二个参数 head 和 index(表示倒数第几个)
+    //2.先遍历整个链表得到总长度 getLength()
+    //3.得到长度size后,从第一个开始遍历(size-index)个
+    //4.找到了,返回节点 没找到,返回空
+    public static HeroNode findLastIndexNode(HeroNode head, int index){
+        //判空
+        if (head.next == null){
+            return null;
+        }
+        //获取链表长度
+        int size = getLength(head);
+
+        //开始查找 k 节点
+        //1.检验一下 index
+        if (index <= 0 || index > size){
+            return null;
+        }
+        //2.定义一个辅助节点 再用for定位到 index 位置
+        HeroNode temp = head.next;
+        for (int i = 0; i < (size - index); i++) {
+            temp = temp.next;
+        }
+        //找到了
+        return temp;
+
+    }
+
+    //面试题1. 获取单链表节点的个数 (如果有带头节点,则不计算带头结点)
+    public static int getLength(HeroNode head){
+        //判空
+        if (head.next == null){
+            return 0;
+        }
+
+        int length = 0;
+        //定义一个辅助变量
+        HeroNode cur = head.next;
+        //遍历
+        while (cur != null){
+            length++;
+            //向下遍历
+            cur = cur.next;
+        }
+        //返回
+        return length;
+    }
+
 }
 
 //创建SingleLinkedList 来管理我们的人物
-class SingleLinkedList {
+class SingleLinkedList01 {
     //先初始化一个头节点 不存放具体的数据 而且头节点不能动 防止以后找不到这个链表
     private HeroNode head = new HeroNode(0, "", "");
 
@@ -99,7 +136,7 @@ class SingleLinkedList {
             //插入位置找到了      heroNode是插入的英雄
             if (temp.next.no > heroNode.no){
                 break;
-                        //temp 节点已存在
+                //temp 节点已存在
             } else if (temp.next.no == heroNode.no){
                 //说明编号存在
                 flag = true;
@@ -214,14 +251,14 @@ class SingleLinkedList {
 }
 
 //创建一个HeroNode类
-class HeroNode {
+class HeroNode01 {
     public int no; //编号
     public String name; //姓名
     public String nickname; //花名
     public HeroNode next; //指向下一个节点
 
     //创建构造函数
-    public HeroNode(int hNo, String hName, String hNickname) {
+    public HeroNode01(int hNo, String hName, String hNickname) {
         this.no = hNo;
         this.name = hName;
         this.nickname = hNickname;
