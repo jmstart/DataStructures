@@ -32,10 +32,43 @@ public class InterviewQuestion {
         System.out.println("有效的节点个数: " + getLength(linkedList.getHead()));
 
         //测试查找单链表中的倒数第 k 个节点
-        HeroNode res = findLastIndexNode(linkedList.getHead(),1);
-        HeroNode res2 = findLastIndexNode(linkedList.getHead(),5);
-        System.out.println("res: " + res);
-        System.out.println("res2: " + res2);
+//        HeroNode res = findLastIndexNode(linkedList.getHead(),1);
+//        HeroNode res2 = findLastIndexNode(linkedList.getHead(),5);
+//        System.out.println("res: " + res);
+//        System.out.println("res2: " + res2);
+
+        //测试链表反转
+        reverseList(linkedList.getHead());
+        linkedList.list();
+
+    }
+
+    //面试题3. 单链表反转【腾讯】
+    public static void reverseList(HeroNode head){
+        //判断当前链表是否为空 或者只有一个节点 就无需反转
+        if (head.next == null || head.next.next == null){
+            return;
+        }
+        //辅助指针日常 出场
+        HeroNode cur = head.next;
+        //指向当前节点[cur]的下一个节点
+        HeroNode next = null;
+        //反转链表的头节点
+        HeroNode reverseHead = new HeroNode(0,"","");
+        //开始遍历原来的链表,每遍历一个节点,就将其取出,并放在新的链表 reverseHead 的最前端
+        while (cur != null){
+            //先保留 当前节点的下一个节点
+            next = cur.next;
+            //将cur的下一个节点 指向新链表头节点的 最前端
+            cur.next = reverseHead.next;
+            //将 cur 连接到新链表上
+            //这句话是 全场 mvp
+            reverseHead.next = cur;
+            //cur后移
+            cur = next;
+        }
+        //实现反转
+        head.next = reverseHead.next;
 
     }
 
