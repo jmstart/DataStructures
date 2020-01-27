@@ -15,9 +15,9 @@ public class TestStack {
         Stack<String> stack = new Stack<String>();
 
         //入栈
-        stack.add("孙悟空");
-        stack.add("孙悟饭");
-        stack.add("孙悟天");
+        stack.push("孙悟空");
+        stack.push("孙悟饭");
+        stack.push("孙悟天");
 
         //出栈
         while (stack.size() > 0) {

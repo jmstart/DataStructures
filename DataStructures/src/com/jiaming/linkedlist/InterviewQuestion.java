@@ -1,5 +1,7 @@
 package com.jiaming.linkedlist;
 
+import java.util.Stack;
+
 /**
  * @author jmstart
  * @create 2020-01-24 19:43
@@ -37,9 +39,36 @@ public class InterviewQuestion {
 //        System.out.println("res: " + res);
 //        System.out.println("res2: " + res2);
 
-        //测试链表反转
-        reverseList(linkedList.getHead());
-        linkedList.list();
+        //测试链表反转 (改变了链表的结构)
+//        reverseList(linkedList.getHead());
+//        linkedList.list();
+
+        //测试逆序打印单链表 (不改变链表的结构)
+        reversePrint(linkedList.getHead());
+
+    }
+
+    //面试题4. 从尾到头打印单链表(使用栈)【百度】
+    public static void reversePrint(HeroNode head){
+        //判空
+        if (head.next == null){
+            return;
+        }
+        //创建一个栈,将节点压入栈中
+        Stack<HeroNode> stack = new Stack<HeroNode>();
+        //日常 辅助
+        HeroNode cur = head.next;
+        //将链表的所有节点压入栈中
+        while (cur != null){
+            //入栈
+            stack.push(cur);
+            //指针后移
+            cur = cur.next;
+        }
+        //出栈 打印
+        while (stack.size() > 0){
+            System.out.println(stack.pop());
+        }
 
     }
 
