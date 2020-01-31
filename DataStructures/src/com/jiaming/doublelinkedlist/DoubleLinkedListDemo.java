@@ -1,5 +1,6 @@
 package com.jiaming.doublelinkedlist;
 
+
 /**
  * @author jmstart
  * @create 2020-01-29 17:57
@@ -21,10 +22,14 @@ public class DoubleLinkedListDemo {
 
         //添加
         System.out.println("--------添加-----------");
-        linkedList.add(heroNode1);
+        /*linkedList.add(heroNode1);
         linkedList.add(heroNode2);
         linkedList.add(heroNode3);
-        linkedList.add(heroNode4);
+        linkedList.add(heroNode4);*/
+        linkedList.addByOrder(heroNode4);
+        linkedList.addByOrder(heroNode3);
+        linkedList.addByOrder(heroNode2);
+        linkedList.addByOrder(heroNode1);
         //遍历
         linkedList.list();
 
@@ -72,6 +77,46 @@ class DoubleLinkedList {
         heroNode.pre = temp;
     }
 
+    //第二种添加方法,根据排名来指定英雄插入的位置
+    /*
+    * 思路：
+    * 1.要先考虑链表中是否有节点,没有节点要先加入节点
+    * 2.链表中有节点,要找到插入位置,在进行插入
+    * */
+    public void addByOrder(HeroNode heroNode) {
+        //因为head节点不能动 所以需要一个辅助变量 temp
+        HeroNode temp = head;
+
+        while (true) {
+            //temp到达链表最后
+            if (temp.next == null) {
+                //链表为空时的状况:插入第一个节点
+                temp.next = heroNode;
+                heroNode.pre = temp;
+                break;
+            }
+            //插入位置找到了
+            if (temp.next.no > heroNode.no) {
+                //第二种情况:
+                //1.先是插入节点关联前后节点
+                heroNode.next = temp.next ;
+                heroNode.pre = temp;
+                //2.在是插入节点的前后节点关联插入节点
+                temp.next.pre = heroNode ;
+                temp.next = heroNode ;
+
+                break;
+                //temp 节点已存在
+            } else if (temp.next.no == heroNode.no) {
+                //说明编号存在
+                break;
+            }
+            //向下遍历
+            temp = temp.next;
+        }
+
+
+    }
 
     //修改节点(和单链表一样)
     public void update(HeroNode newHeroNode) {
