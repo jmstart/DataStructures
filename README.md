@@ -15,4 +15,4 @@
    4.双向链表  
     a:增删改查
    5.环形链表
-    a:Josepfu环
+    a:Josephu环
