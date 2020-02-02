@@ -47,15 +47,15 @@ class SingleCircleLinkedList {
             if (i == 1) {
                 first = boy;
                 //构成环
-                first.setNext(first);
+                first.next = first;
                 //辅助节点指向第一个节点向下走,first不能动
                 curBoy = first;
             } else {
 
                 //添加节点
-                curBoy.setNext(boy);
+                curBoy.next = boy;
                 //连成环
-                boy.setNext(first);
+                boy.next = first;
                 //辅助指针后移
                 curBoy = boy;
             }
@@ -76,15 +76,15 @@ class SingleCircleLinkedList {
         Boy curBoy = first;
 
         while (true) {
-            System.out.printf("编号是:%d \n", curBoy.getNo());
+            System.out.printf("编号是:%d \n", curBoy.no);
 
             //遍历完毕
-            if (curBoy.getNext() == first) {
+            if (curBoy.next == first) {
                 break;
             }
 
             //继续遍历
-            curBoy = curBoy.getNext();
+            curBoy = curBoy.next;
         }
 
     }
@@ -94,29 +94,15 @@ class SingleCircleLinkedList {
 
 //创建一个Boy类,表示一个节点
 class Boy {
+    //这是公有属性,可以这样调用.next 如是私有属性,就要用set和get方法
     //编号
-    private int no;
+    public int no;
     //指向下一个节点,默认为null
-    private Boy next;
+    public Boy next;
 
     //构造方法
     public Boy(int no) {
         this.no = no;
     }
 
-    public int getNo() {
-        return no;
-    }
-
-    public void setNo(int no) {
-        this.no = no;
-    }
-
-    public Boy getNext() {
-        return next;
-    }
-
-    public void setNext(Boy next) {
-        this.next = next;
-    }
 }
