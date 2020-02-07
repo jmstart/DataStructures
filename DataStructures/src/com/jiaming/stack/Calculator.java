@@ -44,7 +44,7 @@ public class Calculator {
                     //1.如要入栈符号优先级小于等于栈中符号优先级
                     // 则符号栈内符号出栈,数栈也出二个数来进行运算
                     // 则结果入数栈, 要入栈的符号入符号栈
-                    if (operStack.priority(ch) <= operStack.priority(operStack.peek())) {
+                    if (operStack.priority(ch) <= operStack.priority((char) operStack.peek())) {
                         //数栈出
                         num1 = numStack.pop();
                         num2 = numStack.pop();
@@ -203,7 +203,7 @@ class ArrayStack1 {
 
     //判断优先级,优先级自己决定
     //优先级: 数字越大,优先级越高 假定现在只有 + - * /
-    public int priority(int oper) {
+    public int priority(char oper) {
         //判断
         if (oper == '*' || oper == '/') {
             return 1;
