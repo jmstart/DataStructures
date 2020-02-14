@@ -92,7 +92,7 @@ public class InfixToSuffixExpression {
             }else {
                 //str 置空
                 str = "";
-                if ( i < Infix.length() && (c = Infix.charAt(i)) >= 48 && (c = Infix.charAt(i)) <= 57){
+                while ( i < Infix.length() && (c = Infix.charAt(i)) >= 48 && (c = Infix.charAt(i)) <= 57){
                     //拼接多位数
                     str += c;
                     i++;
