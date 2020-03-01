@@ -29,7 +29,7 @@ public class InsertSort {
             //定义前面有序的数据索引
             int insertIndex = i - 1;
 
-            //确定数据位置
+            //确定数据位置              //这里要是改成大于 那么排序结果就是从大到小了
             while (insertIndex >= 0 && insertVal < arr[insertIndex]){
                 //如果判断成立,则把前面的大数挪到后面
                 arr[insertIndex + 1] = arr[insertIndex];
@@ -38,7 +38,9 @@ public class InsertSort {
             }
 
             //放置小数  当退出 while循环时 insertIndex是减一的 所以要加一
-            arr[insertIndex + 1] = insertVal;
+            if ((insertIndex + 1) != i) {
+                arr[insertIndex + 1] = insertVal;
+            }
 
             System.out.println("第" + i +"轮后...");
             System.out.println(Arrays.toString(arr));
