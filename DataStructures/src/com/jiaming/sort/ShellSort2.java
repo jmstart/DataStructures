@@ -43,6 +43,7 @@ public class ShellSort2 {
                         j -= gap;
                     }
                     //当退出while循环,就代表找到了"小数"该插入的位置
+                    //当前这j是在while循环中减完步数后的了
                     arr[j] = temp;
                 }
             }
