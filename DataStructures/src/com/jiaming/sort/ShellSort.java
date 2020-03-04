@@ -5,7 +5,8 @@ import java.util.Arrays;
 /**
  * @author jmstart
  * @create 2020-03-03 18:11
- * 希尔排序(交换法,移动法)
+ * 希尔排序(交换法)
+ * 效率不高改进成,移位法.
  */
 public class ShellSort {
 
