@@ -31,7 +31,8 @@ public class InfixToSuffixExpression {
     public static List<String> parseSuffixExpression(List<String> infixList){
 
         //定义运算符栈s1
-        //定义最终结果栈s2——>可以用ArrayList替代 因为其在操作中没有出栈操作 最后还有逆序输出 用栈不方便
+        //定义最终结果栈s2——>可以用ArrayList替代
+        //因为其在操作中没有出栈操作 最后还有逆序输出 用栈不方便
         //而List集合是有序添加直接输出来就是逆波兰表达式(后缀表达式)
         Stack<String> s1 = new Stack<>();
         List<String> s2 = new ArrayList<>();
