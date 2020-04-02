@@ -237,7 +237,7 @@ class ArrayStack1 {
                 res = num1 * num2;
                 break;
             case '/':
-                res = num1 / num2;
+                res = num2 / num1;
                 break;
             default:
                 break;
