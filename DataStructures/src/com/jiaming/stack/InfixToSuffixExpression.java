@@ -56,7 +56,7 @@ public class InfixToSuffixExpression {
                 s1.pop();
             }else {
                 //到了运算符优先级的问题了
-                // 1.当要进入s1中的符号优先级小于等于s1栈顶 则栈顶出栈加入到s2中 循环判断
+                // 1.当要进入s1中的符号优先级小于等于s1栈顶,则栈顶出栈加入到s2中,循环判断
                 while (s1.size() != 0 && Operation.getValue(s) <= Operation.getValue(s1.peek())){
                     s2.add(s1.pop());
                 }
@@ -115,7 +115,8 @@ public class InfixToSuffixExpression {
 
 }
 
-//编写一个 Operation类 返回对应运算符的优先级
+//编写一个 Operation类 
+//返回对应运算符的优先级
 class Operation{
 
     //加
