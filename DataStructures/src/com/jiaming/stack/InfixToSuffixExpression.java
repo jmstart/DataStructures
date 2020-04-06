@@ -7,7 +7,6 @@ import java.util.Stack;
 /**
  * @author jmstart
  * @create 2020-02-11 15:10
- *
  * 中缀表达式转后缀表达式
  */
 public class InfixToSuffixExpression {
