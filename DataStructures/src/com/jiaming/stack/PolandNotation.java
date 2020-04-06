@@ -25,7 +25,7 @@ public class PolandNotation {
         System.out.printf("%s = %d ",suffixExpression,calculate);
     }
 
-    //转换suffixExpression 
+   //转换suffixExpression 
    public static List<String> getListString(String suffixExpression){
         // 1.分割suffixExpression
         String[] split = suffixExpression.split(" ");
