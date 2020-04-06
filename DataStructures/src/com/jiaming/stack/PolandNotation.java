@@ -15,20 +15,24 @@ public class PolandNotation {
         //先定义逆波兰表达式 (3+4)*5-6 => 3 4 + 5 * 6 -
         String suffixExpression = "3 4 + 5 * 6 -";
 
+        //将后缀表达式转换成集合形式,方便运算
         List<String> listString = getListString(suffixExpression);
 
+        //获得表达式运算结果
         int calculate = calculate(listString);
 
+        //输出
         System.out.printf("%s = %d ",suffixExpression,calculate);
     }
 
-    //将 suffixExpression 放到一个 ArrayList里 在配合 栈来计算
-    public static List<String> getListString(String suffixExpression){
+    //转换suffixExpression 
+   public static List<String> getListString(String suffixExpression){
         // 1.分割suffixExpression
         String[] split = suffixExpression.split(" ");
+       
         List<String> list = new ArrayList();
 
-        //取出表达式元素 添加到集合中
+        //取出表达式元素,添加到集合中
         for (String s : split) {
             list.add(s);
         }
@@ -36,18 +40,18 @@ public class PolandNotation {
         return list;
     }
 
-    //计算
+    //计算后缀表达式结果
     public static int calculate(List<String> ls){
         //创建栈
         Stack<String> stack = new Stack<>();
-        //遍历 ls
+        //遍历后缀表达式 ls
         for (String s : ls) {
-            //使用正则取数据
-            if (s.matches("\\d+")){ //判断否是数字 是则入栈
+            //使用正则验证数据
+            if (s.matches("\\d+")){ //判断否是数字,是则入栈
                 //入栈
                 stack.push(s);
             }else {
-                //如是符号 则pop出二个数 计算 结果入栈
+                //如是符号,则pop出二个数计算,结果入栈
                 int num2 = Integer.parseInt(stack.pop()); //栈顶
                 int num1 = Integer.parseInt(stack.pop()); //次栈顶
                 //结果
@@ -56,6 +60,7 @@ public class PolandNotation {
                 if (s.equals("+")){
                     res = num1 + num2;
                 }else if (s.equals("-")){
+                    //用后弹出栈的数据减去先弹出栈的数据
                     res = num1 - num2;
                 }else if (s.equals("*")){
                     res = num1 * num2;
@@ -65,7 +70,7 @@ public class PolandNotation {
                     throw new RuntimeException("运算符有误...");
                 }
 
-                //结果入栈
+                //结果入栈 (将数据转换成字符串小技巧,加双引号)
                 stack.push(res + "");
             }
         }
