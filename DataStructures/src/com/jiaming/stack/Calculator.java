@@ -3,7 +3,7 @@ package com.jiaming.stack;
 /**
  * @author jmstart
  * @create 2020-02-06 14:21
- * 用栈模拟多项式计算
+ * 栈模拟多项式计算
  * 使用的数据结构:
  * 栈 中缀表达式
  */
