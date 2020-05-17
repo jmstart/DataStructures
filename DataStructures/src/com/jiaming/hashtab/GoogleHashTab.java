@@ -12,6 +12,7 @@ import java.util.Scanner;
  */
 public class GoogleHashTab {
     public static void main(String[] args) {
+        //哈希表 = 链表 + 数组
         //创建哈希表
         HashTab hashTab = new HashTab(7);
 
