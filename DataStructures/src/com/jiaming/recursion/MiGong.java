@@ -90,7 +90,7 @@ public class MiGong {
                 }
 
             }else {
-
+                //如果map[i][j] != 0 , 可能是 1， 2， 3
                 return false;
             }
         }
