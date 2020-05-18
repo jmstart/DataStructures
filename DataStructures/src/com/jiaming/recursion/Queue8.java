@@ -28,7 +28,7 @@ public class Queue8 {
         System.out.printf("判断冲突%d次",judgeCount);  //判断冲突15720次
     }
 
-    //摆放第 n个皇后
+    //棋盘摆放皇后
     private void check(int n){
         // n = 8, 就代表8个皇后都已经摆放好了,再摆就是第9个了,因为这是从0开始的
         if (n == max) {  //递归出口
@@ -36,7 +36,7 @@ public class Queue8 {
             return;
         }
 
-        //不等,那就依次判断皇后摆放位置是否冲突,直到最后一个皇后摆放完毕
+        //皇后没摆放完,那就依次判断皇后摆放位置是否冲突,直到最后一个皇后摆放完毕
         for (int i = 0; i < max; i++) {
             //先把当前第 n个皇后, 摆放在第一列,依次试探判断每一列
             arr[n] = i;
