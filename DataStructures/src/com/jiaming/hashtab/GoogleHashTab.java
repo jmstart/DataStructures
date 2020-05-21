@@ -182,7 +182,10 @@ class EmpLinkedList {
             }
             //退出
             if (curEmp.next == null) {
-                curEmp = null; //置空
+                //curEmp置空
+                //如果不置空会把链表最后一个员工(节点)返回出去,无论是找到没找到都会返回去
+                //这样如果没有这个员工,会把最后一个员工输出来
+                curEmp = null; 
                 break;
             }
             //没有找到继续后移
