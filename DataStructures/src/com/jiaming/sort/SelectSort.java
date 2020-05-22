@@ -43,7 +43,10 @@ public class SelectSort {
             }
 
             //交换最小值,最小值和第一个数交换
-            if (minIndex != i) {
+            if (minIndex != i) { //如果minIdex = i,就说明第一个值就是最小值,那就不用交换了
+                //arr[i]就是前面定义的数组第一个值,假定最小的那个值
+                //arr[minIndex]是经过上面比较得到的真正最小值
+                //交换双方位置
                 arr[minIndex] = arr[i];
                 arr[i] = min;
             }
