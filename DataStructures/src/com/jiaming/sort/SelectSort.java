@@ -29,7 +29,7 @@ public class SelectSort {
         for (int i = 0; i < arr.length - 1; i++) {
 
             //第一轮找最小值
-            int minIndex = i; //假定最小数是0
+            int minIndex = i; //假定最小数下标是0
             int min = arr[minIndex];
 
             //循环找最小值
@@ -60,7 +60,7 @@ public class SelectSort {
         for (int i = 0; i < arr.length - 1; i++) {
 
             //第一轮找最小值
-            int minIndex = i; //假定最小数是0
+            int minIndex = i; //假定最小数下标是0
             int min = arr[minIndex];
 
             //循环找最小值
