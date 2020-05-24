@@ -31,6 +31,7 @@ public class InsertSort {
 
             //确定数据位置              //这里要是改成大于 那么排序结果就是从大到小了
             while (insertIndex >= 0 && insertVal < arr[insertIndex]){
+                //放置大数
                 //如果判断成立,则把前面的大数挪到后面
                 arr[insertIndex + 1] = arr[insertIndex];
                 //继续循环
