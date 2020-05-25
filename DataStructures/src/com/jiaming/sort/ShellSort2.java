@@ -21,29 +21,29 @@ public class ShellSort2 {
     //希尔排序
     public static void shellSort2(int[] arr){
 
-        //gap:循环的步数 分成gap组
+        //gap:增量,间隔的步数
         for (int gap = arr.length / 2; gap > 0; gap /= 2){
 
             //从gap个元素开始,对各个组进行 "插入排序"
             //插入排序
             for (int i = gap; i < arr.length; i++){
 
-                //定义待比较的数 每组比较的后面那个数的索引是gap是i
+                //定义待插入的数,每组比较的后面那个数就是大索引的数
                 int j = i;
-                //定义每组比较的后面那个数
+                //取出每组比较的后面那个数
                 int temp = arr[j];
 
                 //判断,每组的后面元素是否小于前面元素
                 if (arr[j] < arr[j - gap]){
                     //成立,移位
                     while (j - gap >= 0 && temp < arr[j - gap]){
-                        //大数移位
+                        //大的数移位到后面
                         arr[j] = arr[j - gap];
                         //进行下一组比较
                         j -= gap;
                     }
-                    //当退出while循环,就代表找到了"小数"该插入的位置
-                    //当前这j是在while循环中减完步数后的了
+                    //当退出while循环,就代表找到了"小数"该插入的位置,把小数放到前面
+                    //当前这j是在while循环中减完步数后的,相当于是arr[j-gap]
                     arr[j] = temp;
                 }
             }
