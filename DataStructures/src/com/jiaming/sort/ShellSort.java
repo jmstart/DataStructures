@@ -22,7 +22,7 @@ public class ShellSort {
     //希尔排序
     public static void shellSort(int[] arr){
 
-        //gap:循环的步数 分成gap组
+        //gap:增量,间隔的步数
         for (int gap = arr.length / 2; gap > 0; gap /= 2){
             //分组循环比较
             for (int i = gap; i < arr.length; i++){
